@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Under construction</title>
+	<title>Oneonbd</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="static/css/under-construction.css">
 </head>
 <body>
+	<div class="per-loader">
+		<img src="static/img/a.png">
+	</div>
+
+	<script type="text/javascript">
+		window.onload = function hidePreLoader(){
+			document.querySelector('.per-loader').style = "transform: translateX(100%);";
+		}
+	</script>
 
     <div class="container">
     	<center>
@@ -20,11 +29,11 @@
     			<p style="text-align: left;text-decoration: underline;font-size: 20px;font-style: italic;margin-bottom: 10px;">Greetings from,<br>
     				<div class="row">
     					<div class="col">
-    						<img class="profile_pic" src="static/img/profile.jpg" alt="Profle_pic">
+    						<img class="profile_pic" src="static/img/profile.webp" alt="Profle_pic">
     					</div>
     					<div class="col">
-    						<h3 class="name">Name goes here</h3>
-    						<h5 class="designation">Designation goes here</h5>
+    						<h3 class="name"><a href="https://www.facebook.com/afikhasan2">Sayed Afik Hasan</a></h3>
+    						<h5 class="designation">Chairman & Managing Director</h5>
     					</div>
     				</div>
     			</p>
