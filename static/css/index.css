@@ -1,0 +1,21 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body, html{
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	-webkit-overflow-x: hidden;
+	-moz-overflow-x: hidden;
+	-ms-overflow-x: hidden;
+}
+
+nav{
+	position: fixed !important;
+	z-index: 1050 !important;
+	width: 100%;
+	background-color: #bbb9b9bf;
+}
