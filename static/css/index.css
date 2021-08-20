@@ -13,9 +13,132 @@ body, html{
 	-ms-overflow-x: hidden;
 }
 
+.btn:focus, .form-control:focus{
+    outline: 0;
+    box-shadow: 0 0 0 .2rem transparent;
+}
+
+.btn-outline-white{
+	color: white;
+	padding: 0.6rem;
+	background-color: transparent;
+	border: 2px solid white;
+	transition: 0.3s;
+}
+
+.btn-outline-white:hover{
+	background-color: white;
+	color: black;
+	transition: 0.3s;
+}
+
 nav{
 	position: fixed !important;
 	z-index: 1050 !important;
 	width: 100%;
 	background-color: #bbb9b9bf;
+}
+
+.navbar-toggler-icon{
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+}
+
+.navbar-brand img{
+	width: 150px;
+}
+
+.nav-item{
+	font-weight: 700;
+	font-size: 20px;
+	border-bottom: 3px solid transparent;
+	transition: 0.3s;
+}
+
+.nav-item:hover{
+	border-bottom: 3px solid white;
+	transition: 0.3s;
+}
+
+.carousel-img{
+	transform: scale(1);
+	animation: zoom infinite 5s ease alternate-reverse;
+}
+
+@keyframes zoom{
+	to{
+		transform: scale(1.1);
+	}
+}
+
+.live-notice{
+	display: flex;
+	border-top: 2px solid #17a2b8; 
+	border-bottom: 2px solid #17a2b8;
+	border-right: 2px solid #17a2b8;
+}
+
+.title-breaker{
+	width: 20px;
+}
+
+.news{
+	text-decoration: none;
+	margin-right: 20px;
+}
+
+.overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #00000075;
+	z-index: 2048;
+	/*display: none;*/
+}
+
+
+#register{
+	width: 370px;
+	height: 500px;
+	position: absolute;
+	/*top: -1200px;*/
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	margin: auto;
+	background-color: white;
+	border-radius: 12px;
+	z-index: 2049;
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	transition: 1s ease-in;
+}
+
+.close{
+	padding: 5px 8px;
+	background-color: transparent;
+	border: 2px solid red;
+	color: red;
+	transition: 0.3s;
+	margin-left: 90%;
+}
+
+.close:hover{
+	transition: 0.3s;
+	color: white;
+	background-color: red;
+}
+
+.form-logo{
+	width: 90%;
+}
+
+@media screen and (max-width: 382px){
+	#register{
+		width: 97%;
+		height: 520px;
+	}
 }
