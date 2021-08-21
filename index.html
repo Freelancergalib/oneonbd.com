@@ -25,14 +25,14 @@
 	<!-- ============preloader section======== -->
 
 	<!-- ============register section======== -->
-	<div class="overlay"></div>
+	<div id="overlay"></div>
 	<div id="register">
-		<span class="close">X</span>
+		<span id="close" onclick="hideRegistration()">X</span>
 		<img class="form-logo" src="static/img/preloader.gif">
 
 		<p class="lead my-3 text-center">Please fill-up the form to be registered</p>
 
-		<form class="" method="post">
+		<form method="post">
 			<div class="form-group">
 				<input class="form-control" type="text" name="full-name" placeholder="Full name" required>
 			</div>
@@ -47,7 +47,10 @@
 			</div>
 			
 			<center>
-				<input class="btn btn-outline-success" type="submit" name="register" value="Register">
+				<button class="btn btn-outline-success" type="submit" name="register">
+					<span>Register</span>
+					<img class="ajax-loader" src="static/img/ajax.gif">
+				</button>
 			</center>
 		</form>
 	</div>
@@ -75,8 +78,8 @@
 	        <li class="nav-item">
 	          <a class="nav-link active" aria-current="page" href="#">Contact</a>
 	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">Register</a>
+	        <li id="registerClick" class="nav-item">
+	          <a class="nav-link active" aria-current="page" onclick="showRegistration()">Register</a>
 	        </li>
 	      </ul>
 	    </div>
@@ -142,13 +145,13 @@
 	<!-- ============main section======== -->
 
 
-	<!-- ============service section======== -->
+	<!-- ============live-notice section======== -->
 	<section id="service">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="my-5 live-notice">
-						<span class="bg-info p-2 text-center">Live notice</span>
+						<span class="bg-info p-2 text-center text-white" style="font-weight: 700;">Live notice</span>
 						<marquee style='width: 90%;' class='p-2'>
 							<img class="title-breaker" src="static/img/favicon.ico">
 							<a class="news" href="">This is to be informed that this site will shutdowm in a few hours!</a>
@@ -167,5 +170,7 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="static/js/register.js"></script>
 </body>
 </html>
