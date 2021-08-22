@@ -8,7 +8,7 @@ function showRegistration(){
 			e.value = '';
 		});
 
-		$('#register form input[name=full-name]').focus();
+		$('#register form input[name=full_name]').focus();
 	});
 }
 
@@ -27,21 +27,58 @@ $(document).ready(function(){
 
 		// disabling the input so that the user can not edit them after submission
 		document.querySelectorAll('#register input').forEach((e)=>{
-			e.setAttribute('disabled','');
+			e.setAttribute('readonly','');
 		});
 
-		document.querySelector('#close').style.opacity = 0.5;
+		document.querySelector('#close').classList.add('disabled');
 		document.querySelector('#close').removeAttribute('onclick');
 
 		$('button[type=submit] span').css({'display':'none'});
+		document.querySelector('button[type=submit]').classList.add('disabled');
 
 		document.querySelector('#register .ajax-loader').style.display = 'block';
-		// let formValues = $(this).serialize();
-		
-		setTimeout(()=>{
-			alert("Registered successfully!");
-			hideRegistration();
-			$('#registerClick').remove();
-		},3000);
+
+		// from processing starts here
+		let formValues = $(this).serialize();
+		console.log(formValues);
+		$.ajax({
+			type: "POST",
+			url: 'register.php',
+			data: formValues,
+			success: function(result){
+				let resultJeson = JSON.parse(result);
+				if(resultJeson.success==0){
+					alert(resultJeson.msg);
+					hideRegistration();
+
+					document.querySelectorAll('#register input').forEach((e)=>{
+						e.removeAttribute('readonly');
+					});
+					document.querySelector('#close').classList.remove('disabled');
+					document.querySelector('#close').setAttribute('onclick','hideRegistration()');
+					$('button[type=submit] span').css({'display':'block'});
+					document.querySelector('#register .ajax-loader').style.display = 'none';
+					document.querySelector('button[type=submit]').classList.remove('disabled');
+				}else{
+					alert(resultJeson.msg);
+					hideRegistration();
+					$('#registerClick').remove();
+				}
+			},
+			error: function(){
+				alert("Sending request to the server failed. Please try again!");
+			}
+		});
 	});
 });
+
+function a(){
+	showRegistration();
+
+	setTimeout(()=>{
+		document.querySelector('#register input[name=full_name]').value = 'jgrfjhf'
+		document.querySelector('#register input[name=phn]').value = 'jgrfjhf'
+		document.querySelector('#register input[name=pass]').value = 'jgrfjhf'
+		document.querySelector('#register input[name=mail]').value = 'jgrfjhf@gmai.com'
+	},1000)
+}

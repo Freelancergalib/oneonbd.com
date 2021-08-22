@@ -11,6 +11,7 @@ body, html{
 	-webkit-overflow-x: hidden;
 	-moz-overflow-x: hidden;
 	-ms-overflow-x: hidden;
+	background-color: #343a40;
 }
 
 .btn:focus, .form-control:focus{
@@ -30,6 +31,10 @@ body, html{
 	background-color: white;
 	color: black;
 	transition: 0.3s;
+}
+
+.section-heading{
+	text-align: center !important;
 }
 
 nav{
@@ -140,6 +145,22 @@ nav{
 	width: 30px;
 	text-align: center;
 	display: none;
+}
+
+.card{
+	/*width: 300px;*/
+	margin: 0.3rem;
+}
+
+.notice{
+	border: 2px solid #17a2b8;
+	padding: 50px;
+}
+
+.videoes iframe{
+	width: 300px;
+	height: 200px;
+	margin: 0.3rem;
 }
 
 @media screen and (max-width: 382px){
