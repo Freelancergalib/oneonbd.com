@@ -67,7 +67,7 @@
 	<!-- ============navber section======== -->
 	<nav class="navbar navbar-expand-lg navbar-dark">
 	  <div class="container">
-	    <a class="navbar-brand" href="/"><img src="static/img/preloader.gif"></a>
+	    <a class="navbar-brand" href="/OneonBD/"><img src="static/img/preloader.gif"></a>
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
@@ -167,11 +167,15 @@
 					<div class="live-notice bg-white">
 						<span class="bg-info p-2 text-center text-white" style="font-weight: 700;">Live notice</span>
 						<marquee style='width: 90%;' class='p-2'>
+							<?php
+							require("db_connect.php");
+							if($sql=mysqli_query($db,"SELECT * FROM `notice`;")):
+								while($fetch=mysqli_fetch_array($sql)):
+							?>
 							<img class="title-breaker" src="static/img/favicon.ico">
-							<a class="news" href="">This is to be informed that this site will shutdowm in a few hours!</a>
-
-							<img class="title-breaker" src="static/img/favicon.ico">
-							<a class="news" href="">This was nothing but joking!</a>
+							<a class="news" href=""><?php echo $fetch['title']; ?></a>
+							<?php endwhile; ?>
+							<?php endif; ?>
 						</marquee>
 					</div>
 				</div>
@@ -289,14 +293,13 @@
 					<div class="col-lg-12">
 						<div class="notice text-white">
 							<ul>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
-								<li>jskajdskjfnkdsgnkrdykjertbkjerbtk</li>
+								<?php
+								if($sql=mysqli_query($db,"SELECT * FROM `notice`;")):
+									while($fetch=mysqli_fetch_array($sql)):
+								?>
+								<li><?php echo $fetch['title']; ?></li>
+								<?php endwhile; ?>
+								<?php endif; ?>
 							</ul>
 						</div>
 					</div>
@@ -415,11 +418,13 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="videoes d-flex justify-content-center flex-wrap">
-							<iframe width="640" height="390" src="https://www.youtube.com/embed/9RTaIpVuTqE" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							<iframe width="640" height="390" src="https://www.youtube.com/embed/9RTaIpVuTqE" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							<iframe width="640" height="390" src="https://www.youtube.com/embed/9RTaIpVuTqE" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							<iframe width="640" height="390" src="https://www.youtube.com/embed/9RTaIpVuTqE" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-							<iframe width="640" height="390" src="https://www.youtube.com/embed/9RTaIpVuTqE" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<?php
+							if($sql=mysqli_query($db,"SELECT * FROM `videos`;")):
+								while($fetch=mysqli_fetch_array($sql)):
+							?>
+							<iframe width="640" height="390" src="https://www.youtube.com/embed/<?php echo $fetch['url']; ?>" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							<?php endwhile; ?>
+							<?php endif; ?>
 						</div>
 					</div>
 				</div>
@@ -441,7 +446,7 @@
 
 				<div class="row">
 					<div class="col-lg-12">
-						<div class='bg-white p-3 d-flex align-items-center justify-content-center'>
+						<div class='bg-white p-3 d-flex align-items-center justify-content-center flex-wrap'>
 							<h1 class="text-dark m-2">DBBL</h1>
 							<h1 class="text-dark m-2">DBBL</h1>
 							<h1 class="text-dark m-2">DBBL</h1>

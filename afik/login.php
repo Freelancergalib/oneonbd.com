@@ -1,4 +1,57 @@
 <!DOCTYPE html>
+<?php
+session_start();
+
+// checking cookie logging
+function cookie_token_chk(){
+	if (isset($_COOKIE['logged_in_c'])) {
+		$cur_date = (int)date('j');
+		$cur_mon_year = date('F-Y');
+
+		for ($i=0; $i < 7; $i++) {
+			$date_chk = $cur_date - $i;
+			if(sha1(md5("{$date_chk}-{$cur_mon_year}")) == $_COOKIE['logged_in_c']){
+				return true;
+			}
+		}
+	}
+	else{
+		return false;
+	}
+}
+
+//redirecting if already loogged-in
+if ((isset($_SESSION['logged_in']) and $_SESSION['logged_in']==sha1(md5(date("j-F-Y")))) or cookie_token_chk()) {
+	?>
+	<script type="text/javascript">
+		window.history.go(-1);
+	</script>
+	<?php
+}
+
+//processing the form
+if (isset($_POST['login'])) {
+	$usrname = $_POST['usrname'];
+	$pwd = $_POST['pwd'];
+	$date = sha1(md5(date("j-F-Y")));
+
+	if ($usrname=='afik' and $pwd=='abc123089') {
+		if (isset($_POST['login_remember'])) {
+			setcookie('logged_in_c',$date,time()+(86400*7),'/');
+		}else{
+			$_SESSION['logged_in'] = $date;
+		}
+
+		header("location:/OneonBD/afik/");
+	}else{
+		?>
+		<script type="text/javascript">
+			alert("Wrong credentials!");
+		</script>
+		<?php
+	}
+}
+?>
 <html>
 <head>
 	<title>Oneonbd</title>
@@ -9,10 +62,7 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+	<!-- <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/> -->
 
 	<link rel="stylesheet" type="text/css" href="../static/css/preloader.css">
 	<link rel="stylesheet" type="text/css" href="../static/css/admin.css">
@@ -38,28 +88,43 @@
 	<nav class="navbar navbar-expand-lg navbar-dark">
 	  <div class="container">
 	    <a class="navbar-brand" href="/"><img src="../static/img/preloader.gif"></a>
-	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav ml-lg-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">Home</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#service">Service</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#team">Our-team</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">Contact</a>
-	        </li>
-	      </ul>
 	    </div>
 	  </div>
 	</nav>
 	<!-- ============navber section======== -->
+
+
+	<!-- ============login section======== -->
+	<main class="my-5 py-5">
+		<div class="container">
+			<div class="row mt-5 mb-2">
+				<div class="col-lg-12">
+					<h3 class="text-center text-white">Please submit your credentials to log-in</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-lg-12">
+					<form class="login-form" method="post">
+						<div class="form-group">
+							<input class="form-control" type="text" placeholder="Username" required maxlength="10" name="usrname" autocomplete="off">
+						</div>
+						<div class="form-group">
+							<input class="form-control" type="password" placeholder="Password" required maxlength="30" minlength="8" name="pwd">
+						</div>
+						<div class="form-group">
+							<input id="remember" type="checkbox" value="remember" name="login_remember">
+							<label for="remember" class="text-white" style="cursor: pointer;">Remember me for 7 days</label>
+						</div>
+						<div class="form-group">
+							<input class="btn btn-outline-info" type="submit" name="login" value="Log-in" autocomplete="off">
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<!-- ============login section======== -->
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

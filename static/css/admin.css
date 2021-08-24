@@ -23,7 +23,7 @@ body, html{
 	color: white;
 	padding: 0.6rem;
 	background-color: transparent;
-	border: 2px solid white;
+	border: 1px solid white;
 	transition: 0.3s;
 }
 
@@ -60,6 +60,15 @@ nav{
 	transition: 0.3s;
 }
 
+#overlay{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: #00000075;
+	z-index: 2048;
+	display: none;
+}
+
 .login-form{
 	display: flex;
 	flex-direction: column;
@@ -77,4 +86,13 @@ nav{
 .login-form input[class=form-control]:hover:not(:focus){
 	border: 2px solid #17a2b8;
 	transition: 0.3s;
+}
+
+.table-hover tr:hover {
+    background-color: rgba(0, 0, 0, 0.57) !important;
+}
+
+.table-responsive{
+	overflow-y: visible;
+	height: 400px;
 }

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php require('login_chk.php'); ?>
 <html>
 <head>
 	<title>Oneonbd</title>
@@ -25,6 +26,7 @@
 	<script type="text/javascript">
 		window.onload = function hidePreLoader(){
 			document.querySelector('.per-loader').style = "transform: translateX(100%);";
+			updateTable()
 		}
 	</script>
 	<!-- ============preloader section======== -->
@@ -35,42 +37,65 @@
 
 
 	<!-- ============navber section======== -->
-	<nav class="navbar navbar-expand-lg navbar-dark">
-	  <div class="container">
-	    <a class="navbar-brand" href="/"><img src="../static/img/preloader.gif"></a>
-	    </div>
-	  </div>
-	</nav>
+	<?php require('nav.html'); ?>
 	<!-- ============navber section======== -->
 
 
-	<!-- ============login section======== -->
+	<!-- ============main section======== -->
 	<main class="my-5 py-5">
 		<div class="container">
 			<div class="row mt-5 mb-2">
 				<div class="col-lg-12">
-					<h3 class="text-center text-white">Please submit your credentials to log-in</h3>
+					<h3 class="text-white text-center">Manage videos</h3>
 				</div>
 			</div>
 
 			<div class="row">
 				<div class="col-lg-12">
-					<form class="login-form" method="post">
-						<div class="form-group">
-							<input class="form-control" type="text" placeholder="Username" required maxlength="10" name="usrname">
-						</div>
-						<div class="form-group">
-							<input class="form-control" type="password" placeholder="Password" required maxlength="30" minlength="8" name="pwd">
-						</div>
-						<div class="form-group">
-							<input class="btn btn-outline-info" type="submit" name="login" value="Log-in">
+					<form method="post">
+						<div class="form-group d-flex">
+							<input class="form-control mr-2" type="text" name="notice" placeholder="Write your notice here" required>
+							
+							<div id="submit" style="display: flex;justify-content: center;align-items: center;">
+								<input class="btn btn-outline-white" type="submit" name="add_notice" value="Add"></input>
+							</div>
 						</div>
 					</form>
 				</div>
 			</div>
 		</div>
 	</main>
-	<!-- ============login section======== -->
+	<!-- ============main section======== -->
+	
+
+
+	<!-- ============show-notice section======== -->
+	<section id="showNotice">
+		<div class="inner-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="text-white text-center">All the videos</h3>
+					</div>
+				</div>
+
+				<div class="row mt-3 mb-5">
+					<div class="col-lg-12">
+						<div class="table-responsive">
+							<table class="table table-hover text-center text-white">
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Notice title</th>
+									<th scope="col">Actions</th>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ============show-notice section======== -->
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -78,6 +103,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 	<script type="text/javascript" src="../static/js/stickyNav.js"></script>
+	<script type="text/javascript" src="../static/js/video.js"></script>
 
 	<section class="">
 	  <!-- Footer -->
