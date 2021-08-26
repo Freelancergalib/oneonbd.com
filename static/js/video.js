@@ -44,42 +44,45 @@ $(document).ready(()=>{
 
 		$('#overlay').css({'display':'block'})
 
-		let videoUrl = $('input[name=notice]').val().split('=')[1]
-
-		//inserting data to the database
-		if($('input[type=submit]').val()=='Add'){
-			$.ajax({
-				type:'POST',
-				url:'function_manage_video.php',
-				data: {videoUrl:videoUrl,cmd:'add'},
-				success:(response)=>{
-					let responseJsn = JSON.parse(response)					
-					if (responseJsn.success==1) {
-						$('input[name=notice]').val('');
-						updateTable()
-					}
-				},
-				error:(err)=>{
-					alert('Something went wrong. Please try again!')
-				}
-			})
-		}
-
-		//updating data of the database
-		else if($('input[type=submit]').val()=='Update'){
+		if ($('input[name=notice]').val().split('=')[0]!="https://www.youtube.com/watch?v") {
+			alert("Wrong url");
+			$('#overlay').css({'display':'none'})
+		}else{
 			let videoUrl = $('input[name=notice]').val().split('=')[1]
 
-			$.ajax({
-				type:'POST',
-				url:'function_manage_video.php',
-				data: {cmd:'update',pk:parseInt(dbId),newUrl:videoUrl},
-				success:(response)=>{
-					updateTable()
-				},
-				error:(err)=>{
-					alert('Something went wrong. Please try again!')
-				}
-			})
+			//inserting data to the database
+			if($('input[type=submit]').val()=='Add'){
+				$.ajax({
+					type:'POST',
+					url:'function_manage_video.php',
+					data: {videoUrl:videoUrl,cmd:'add'},
+					success:(response)=>{
+						let responseJsn = JSON.parse(response)					
+						if (responseJsn.success==1) {
+							$('input[name=notice]').val('');
+							updateTable()
+						}
+					},
+					error:(err)=>{
+						alert('Something went wrong. Please try again!')
+					}
+				})
+			}
+
+			//updating data of the database
+			else if($('input[type=submit]').val()=='Update'){
+				$.ajax({
+					type:'POST',
+					url:'function_manage_video.php',
+					data: {cmd:'update',pk:parseInt(dbId),newUrl:videoUrl},
+					success:(response)=>{
+						updateTable()
+					},
+					error:(err)=>{
+						alert('Something went wrong. Please try again!')
+					}
+				})
+			}
 		}
 	})
 })

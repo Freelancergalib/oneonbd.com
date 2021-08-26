@@ -89,7 +89,7 @@
 	          <a class="nav-link active" aria-current="page" href="#">Shop</a>
 	        </li>
 	        <?php if(!isset($_COOKIE['rg94Kr'])): ?>
-	        <li id="registerClick">
+	        <li id="registerClick" class="ml-lg-2">
 	          <button class="btn-sm btn-outline-white" onclick="showRegistration()">
 	          		<i class="fas fa-user"></i> Signup
 	          	</button>
@@ -99,6 +99,13 @@
 	    </div>
 	  </div>
 	</nav>
+	<script type="text/javascript">
+    	document.querySelectorAll('nav .nav-link').forEach((e)=>{
+    		e.onclick = ()=>{
+    			document.querySelector('.navbar-toggler').click();
+    		}
+    	})
+    </script>
 	<!-- ============navber section======== -->
 	
 
@@ -160,12 +167,12 @@
 
 
 	<!-- ============live-notice section======== -->
-	<section class="my-5 pb-5" id="service">
+	<section class="my-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="live-notice bg-white">
-						<span class="bg-info p-2 text-center text-white" style="font-weight: 700;">Live notice</span>
+						<span class="bg-info p-2 text-center text-white" style="font-weight: 700;">Update</span>
 						<marquee style='width: 90%;' class='p-2'>
 							<?php
 							require("db_connect.php");
@@ -186,7 +193,7 @@
 	
 
 	<!-- ============service section======== -->
-	<section class="my-5 pb-5" id="service">
+	<section class="my-5" id="service">
 		<div class="inner-section">
 			<div class="container">
 				<div class="row">
@@ -197,79 +204,97 @@
 
 				<div class="row">
 					<div class="col-lg-12">
-						<div class="owl-carousel">
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
+						<div class="wrapper">
+						    <div class="table basic">
+						      <div class="price-section">
+						        <div class="price-area">
+						          <div class="inner-area">
+						            <span class="text">$</span>
+						            <span class="price">29</span>
+						          </div>
+						        </div>
+						      </div>
+						      <div class="package-name"></div>
+						      <ul class="features">
+						        <li>
+						          <span class="list-name">One Selected Template</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">100% Responsive Design</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Credit Remove Permission</span>
+						          <span class="icon cross"><i class="fas fa-times"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Lifetime Template Updates</span>
+						          <span class="icon cross"><i class="fas fa-times"></i></span>
+						        </li>
+						      </ul>
+						      <div class="btn"><button>Purchase</button></div>
+						    </div>
+						    <div class="table premium">
+						      <div class="price-section">
+						        <div class="price-area">
+						          <div class="inner-area">
+						            <span class="text">$</span>
+						            <span class="price">59</span>
+						          </div>
+						        </div>
+						      </div>
+						      <div class="package-name"></div>
+						      <ul class="features">
+						        <li>
+						          <span class="list-name">Five Existing Templates</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">100% Responsive Design</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Credit Remove Permission</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Lifetime Template Updates</span>
+						          <span class="icon cross"><i class="fas fa-times"></i></span>
+						        </li>
+						      </ul>
+						      <div class="btn"><button>Purchase</button></div>
+						    </div>
+						    <div class="table ultimate">
+						      <div class="price-section">
+						        <div class="price-area">
+						          <div class="inner-area">
+						            <span class="text">$</span>
+						            <span class="price">99</span>
+						          </div>
+						        </div>
+						      </div>
+						      <div class="package-name"></div>
+						      <ul class="features">
+						        <li>
+						          <span class="list-name">All Existing Templates</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">100% Responsive Design</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Credit Remove Permission</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						        <li>
+						          <span class="list-name">Lifetime Template Updates</span>
+						          <span class="icon check"><i class="fas fa-check"></i></span>
+						        </li>
+						      </ul>
+						      <div class="btn"><button>Purchase</button></div>
+						    </div>
 						</div>
 					</div>
 				</div>
@@ -280,7 +305,7 @@
 	
 
 	<!-- ============notice section======== -->
-	<section id="notice" class="my-5 pb-5">
+	<section id="notice" class="my-5">
 		<div class="inner-section">
 			<div class="container">
 				<div class="row">
@@ -312,7 +337,7 @@
 
 
 	<!-- ============team section======== -->
-	<section id="team" class="my-5 pb-5">
+	<section id="team" class="my-5">
 		<div class="inner-section">
 			<div class="container">
 				<div class="row">
@@ -322,81 +347,57 @@
 				</div>
 
 				<div class="row">
-					<div class="col-lg-12">
-						<div class="owl-carousel">
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-							<div class="card">
-								<div class="card-body">
-									<p class="lead">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-										tempor incididunt ut labore et dolore magna aliqua.
-									</p>
-								</div>
-							</div>
-						</div>
+					<div class="col-lg-12 d-flex justify-content-center align-items-center flex-wrap">
+						<div class="card">
+				            <div class="content">
+				                <div class="imgBx">
+				                    <img src="static/img/profile.webp" alt="">
+				                </div>
+				                <div class="contentBx">
+				                    <h4>Afik</h4>
+				                    <h5>CEO</h5>
+				                </div>
+				                <div class="sci">
+				                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				                </div>
+				            </div>
+				        </div>
+				        
+				        <div class="card">
+				            <div class="content">
+				                <div class="imgBx">
+				                    <img src="static/img/profile.webp" alt="">
+				                </div>
+				                <div class="contentBx">
+				                    <h4>Shuvo</h4>
+				                    <h5>Developer</h5>
+				                </div>
+				                <div class="sci">
+				                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				                </div>
+				            </div>
+				        </div>
+
+				        <div class="card">
+				            <div class="content">
+				                <div class="imgBx">
+				                    <img src="static/img/profile.webp" alt="">
+				                </div>
+				                <div class="contentBx">
+				                    <h4>Galib</h4>
+				                    <h5>Developer</h5>
+				                </div>
+				                <div class="sci">
+				                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+				                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+				                </div>
+				            </div>
+				        </div>
 					</div>
 				</div>
 			</div>
@@ -406,7 +407,7 @@
 	
 
 	<!-- ============youtube section======== -->
-	<section id="youtube" class="my-5 pb-5">
+	<section id="youtube" class="my-5">
 		<div class="inner-section">
 			<div class="container">
 				<div class="row">
@@ -435,7 +436,7 @@
 	
 
 	<!-- ============sponsor section======== -->
-	<section id="sponsor" class="my-5 pb-5">
+	<section id="sponsor" class="my-5">
 		<div class="inner-section">
 			<div class="container">
 				<div class="row">
@@ -447,12 +448,11 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class='bg-white p-3 d-flex align-items-center justify-content-center flex-wrap'>
-							<h1 class="text-dark m-2">DBBL</h1>
-							<h1 class="text-dark m-2">DBBL</h1>
-							<h1 class="text-dark m-2">DBBL</h1>
-							<h1 class="text-dark m-2">DBBL</h1>
-							<h1 class="text-dark m-2">DBBL</h1>
-							<h1 class="text-dark m-2">DBBL</h1>
+							<img src="static/sponser/bank-asia.svg">
+							<img src="static/sponser/rocket.svg">
+							<img src="static/sponser/bkash.svg">
+							<img src="static/sponser/mastercard.png">
+							<img src="static/sponser/nagad.png">
 						</div>
 					</div>
 				</div>
@@ -470,81 +470,11 @@
 
 	<script type="text/javascript" src="static/js/stickyNav.js"></script>
 	<script type="text/javascript" src="static/js/OwlCarousel.js"></script>
+	<?php if(!isset($_COOKIE['rg94Kr'])): ?>
 	<script type="text/javascript" src="static/js/register.js"></script>
+	<?php endif; ?>
 
 
-	<section class="">
-	  <!-- Footer -->
-	  <footer class="text-white" style="background-color: #111828;">
-	    <!-- Grid container -->
-	    <div class="container p-4">
-	      <!--Grid row-->
-	      <div class="row">
-	        <!--Grid column-->
-	        <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-	          <h5 class="">OneonBD</h5>
-
-	          <p>
-	            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste atque ea quis
-	            molestias. Fugiat pariatur maxime quis culpa corporis vitae repudiandae
-	            aliquam voluptatem veniam, est atque cumque eum delectus sint!
-	          </p>
-	        </div>
-	        <!--Grid column-->
-
-	        <!--Grid column-->
-	        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-	          <h5 class="text-uppercase">Links</h5>
-
-	          <ul class="list-unstyled mb-0">
-	            <li>
-	              <a href="#!" class="text-white">Link 1</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 2</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 3</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 4</a>
-	            </li>
-	          </ul>
-	        </div>
-	        <!--Grid column-->
-
-	        <!--Grid column-->
-	        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-	          <h5 class="text-uppercase mb-0">Links</h5>
-
-	          <ul class="list-unstyled">
-	            <li>
-	              <a href="#!" class="text-white">Link 1</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 2</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 3</a>
-	            </li>
-	            <li>
-	              <a href="#!" class="text-white">Link 4</a>
-	            </li>
-	          </ul>
-	        </div>
-	        <!--Grid column-->
-	      </div>
-	      <!--Grid row-->
-	    </div>
-	    <!-- Grid container -->
-
-	    <!-- Copyright -->
-	    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-	    	&copy;2020 Copyright. All rights are reserved.
-	    </div>
-	    <!-- Copyright -->
-	  </footer>
-	  <!-- Footer -->
-	</section>
+	<?php include('footer.html'); ?>
 </body>
 </html>
