@@ -40,7 +40,6 @@ $(document).ready(function(){
 
 		// from processing starts here
 		let formValues = $(this).serialize();
-		console.log(formValues);
 		$.ajax({
 			type: "POST",
 			url: 'register.php',
